@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Poppins:wght@300&display=swap');
+
+:root{
+    font-size: 62.5%;
+}
+
+
+body{
+    font-family: "Poppins", "Montserrat", sans-serif;
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+}
+
+header{
+    font-size: 5rem;
+    margin: 20px;
+    font-weight: bold;
+}
+
+main{
+    background-color: whitesmoke;
+    width: 600px;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+
+}
+
+button{
+    font-family: inherit;
+    font-size: 2rem;
+}
+
+.newBookBtn{
+    margin: 50px;
+    align-self: center;
+    height: 50px;
+    width: 150px;
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+:modal{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-rows: repeat(5, 1fr);
+    width: 300px;
+    height: 300px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+:modal > div {
+    display: flex;
+    justify-content: center;
+}
+
+.modal-backdrop-in{
+    opacity: 0.5;
+}
+
+label{
+    font-size: 1.7rem;
+    margin-bottom: 2px;
+}
+
+input {
+    font-size: 1.5rem;
+}
+
+.buttons{
+    gap: 25px
+}
+
+.closeBtn, .sendBtn {
+    border-radius: 5px;
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.closeBtn {
+    background-color: red;
+}
+
+.sendBtn {
+    background-color: #18db18;
+}
+
+.closeBtn:hover, .sendBtn:hover{
+    border: 1px solid black;
+}
+
+
+.newBookBtn:hover{
+    border: 1px solid black;
+}
+
+li{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 35px 20px 0;
+}
+
+.leftDiv{
+    justify-self: start;
+}
+
+.title {
+    font-size: 2rem;
+}
+
+.author{
+    font-size: 1.5rem;
+}
+
+.pages{
+    color: gray
+}
+
+.rightDiv{
+    justify-self: end;
+    display: flex;
+    align-items: center;
+}
+
+.isReadBtn, .deleteBtn{
+    width: 70px;
+    height: 35px;
+    margin: 5px;
+    border-radius: 20px;
+}
+
+.isReadBtn{
+    background-color: whitesmoke;
+    border: 1px solid #18db18;
+    color: whitesmoke;
+    box-shadow: 1px 1px 1px gray;
+    cursor: pointer;
+}
+
+.isReadBtn:hover, .isReadBtn.checked{
+    background-color: #18db18;
+    
+}
+
+.deleteBtn{
+    background-color: red;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: white;
+    box-shadow: 1px 1px 1px gray;
+}
+
+.leftDiv > p, .rightDiv > p{
+    margin: 2px;
+}
+
