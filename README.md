@@ -1,1 +1,1 @@
-# odin-library
+I'm going to create a book library using HTML, CSS & JavaScript following the Odin Project Course
