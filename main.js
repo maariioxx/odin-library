@@ -5,48 +5,65 @@ const closeBtn = document.querySelector(".closeBtn")
 const sendBtn = document.querySelector(".sendBtn")
 const form = document.querySelector("form");
 
-const myLibrary = [
-    
-];
+const myLibrary = [];
 
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, isRead) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = read;
+    this.isRead = isRead;
 }
 
 function addBookToLibrary(){
     let titleInput = document.querySelector("#title").value;
     let authorInput = document.querySelector("#author").value;
     let pagesInput = document.querySelector("#pages").value;
-    let readInput = document.querySelector("#read").value;
+    let readInput = document.querySelector("#isRead").checked;
     myLibrary.push(new Book(titleInput, authorInput, pagesInput, readInput));
-    console.log(myLibrary)
 }
 
 function displayBooks(){
     for(let i = myLibrary.length - 1; i < myLibrary.length; i++){
+        leftDiv = document.createElement("div");
+        leftDiv.classList.add("leftDiv");
+
+        rightDiv = document.createElement("div");
+        rightDiv.classList.add("rightDiv");
         bookLi = document.createElement("li");
+
         bookLi.setAttribute("id", `${myLibrary.indexOf(myLibrary[i])}`)
+
         title = document.createElement("p");
+        title.classList.add("title");
         title.textContent = myLibrary[i].title;
+
         author = document.createElement("p");
-        author.textContent = myLibrary[i].author;
+        author.classList.add("author");
+        author.textContent = "Made by: " + myLibrary[i].author;
+
         pages = document.createElement("p");
-        pages.textContent = myLibrary[i].pages;
-        read = document.createElement("p");
-        read.textContent = myLibrary[i].read;
+        pages.classList.add("pages")
+        pages.textContent = myLibrary[i].pages + " pages";
+        
+        isRead = document.createElement("button");
+        isRead.classList.add("isReadBtn");
+        isRead.classList.add("material-icons");
+        if(myLibrary[i].isRead === true) {isRead.classList.add("checked")};
+        isRead.textContent = "check";
+
         deleteBtn = document.createElement("button")
         deleteBtn.classList.add("deleteBtn")
-        deleteBtn.textContent = "DELETE"
+        deleteBtn.classList.add("material-icons")
+        deleteBtn.textContent = "delete"
 
-        bookLi.appendChild(title);
-        bookLi.appendChild(author);
-        bookLi.appendChild(pages);
-        bookLi.appendChild(read);
-        bookLi.appendChild(deleteBtn)
+        leftDiv.appendChild(title);
+        leftDiv.appendChild(author);
+        leftDiv.appendChild(pages);
+        rightDiv.appendChild(isRead);
+        rightDiv.appendChild(deleteBtn);
+        bookLi.appendChild(leftDiv);
+        bookLi.appendChild(rightDiv);
         library.appendChild(bookLi);
     }
 }
@@ -69,11 +86,21 @@ sendBtn.addEventListener("click", (e) => {
 })
 
 document.addEventListener("click", function(e){
-    const target = e.target.closest(".deleteBtn")
-    if(target){
+    const deleteBtn = e.target.closest(".deleteBtn")
+    if(deleteBtn){
         const index = myLibrary[e.target.parentNode.id]
         myLibrary.splice(index, 1)
-        e.target.parentElement.remove();
+        e.target.parentElement.parentElement.remove();
+    }
+
+    const isReadBtn = e.target.closest(".isReadBtn");
+    if(isReadBtn){
+        if(e.target.classList.contains("checked")){
+            e.target.classList.remove("checked")
+        } else {
+            e.target.classList.add("checked")
+        }
+        
     }
 })
 
