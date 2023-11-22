@@ -8,11 +8,13 @@ const form = document.querySelector("form");
 const myLibrary = [];
 
 
-function Book(title, author, pages, isRead) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
+class Book {
+    constructor(title, author, pages, read){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 }
 
 function addBookToLibrary(){
@@ -21,6 +23,7 @@ function addBookToLibrary(){
     let pagesInput = document.querySelector("#pages").value;
     let readInput = document.querySelector("#isRead").checked;
     myLibrary.push(new Book(titleInput, authorInput, pagesInput, readInput));
+    console.log(myLibrary)
 }
 
 function displayBooks(){
